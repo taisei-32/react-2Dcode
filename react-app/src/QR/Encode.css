@@ -1,0 +1,12 @@
+label, textarea{
+    letter-spacing: 2px;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+textarea{
+    width: 100px;
+}

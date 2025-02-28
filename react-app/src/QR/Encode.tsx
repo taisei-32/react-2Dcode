@@ -7,7 +7,8 @@ function QR_Encode() {
         <div>
             <form>
                 <label>Text: </label>
-                <textarea rows={6} cols={60}></textarea>
+                <textarea rows={6} cols={100}></textarea>
+                <p>100文字</p>
             </form>
         </div>
     )

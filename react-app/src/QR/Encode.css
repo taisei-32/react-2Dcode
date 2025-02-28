@@ -1,22 +1,170 @@
-form{
-    margin: 20px;
-    width: fit-content;
-    margin: auto;
+form {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 700px;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-label, textarea{
-    letter-spacing: 2px;
-}
-
-label{
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    text-align: left;
 }
 
-p{
-    text-align: right;
+textarea {
+    width: 95%;
+    height: 120px;
+    padding: 12px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+    background: #f8f8f8;
+    transition: all 0.2s ease-in-out;
 }
 
-/* textarea{
-    width: 100px;
-} */
+textarea::placeholder{
+    font-size: 0.75em;
+    color: silver;
+}
+
+textarea:focus {
+    border: 1px solid #007bff;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.reset_count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.reset_count .reset {
+    background: dimgray;
+    color: white;
+    font-size: 14px;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.reset_count .reset:hover {
+    background: #444;
+    transform: scale(1.05);
+}
+
+tbody{
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 20px;
+    border-spacing: 50px 10px;
+}
+
+td.td_name{
+    background: #333;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0px 20px;
+}
+
+.td_op input, .td_op select {
+    display: flex;
+    width: 120px;  
+    height: 35px; 
+    padding: 8px; 
+    font-size: 14px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+    justify-content: left;
+    text-align: center;
+}
+
+.td_number input{
+    display: flex;
+    width: 120px;  
+    height: 35px; 
+    padding: 8px; 
+    font-size: 14px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+    justify-content: left;
+    text-align: center;
+}
+
+.td_color input{
+    width: 200px;  
+    height: 40px; 
+    padding: 8px; 
+    font-size: 14px; 
+    border-radius: 8px; 
+    border: 1px solid #ccc; 
+    justify-content: left;
+}
+
+button {
+    background: dimgray;
+    color: white;
+    font-size: 16px;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.reset_count p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+button:hover, input.reset:hover{
+    background: dimgray;
+    transform: scale(1.05);
+}
+
+canvas{
+    border: 1px solid black;
+    padding: 10px;
+    margin: "0 auto";
+    text-align: center;
+}
+
+.div_canvas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+}
+
+.errorlevel{
+    margin: 40px auto;
+}

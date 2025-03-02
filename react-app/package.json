@@ -2,12 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
   "dependencies": {
-    "@bwip-js/browser": "^4.5.1",
-    "@bwip-js/generic": "^4.5.1",
-    "@bwip-js/node": "^4.5.1",
-    "@bwip-js/react-native": "^4.5.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -16,9 +11,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@zxing/browser": "^0.1.5",
     "bwip-js": "^4.5.1",
-    "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.30.0",
@@ -28,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,6 +44,15 @@
     ]
   },
   "devDependencies": {
-    "@types/qrcode": "^1.5.5"
+    "@bwip-js/browser": "^4.5.1",
+    "@bwip-js/generic": "^4.5.1",
+    "@bwip-js/node": "^4.5.1",
+    "@bwip-js/react-native": "^4.5.1",
+    "@types/qrcode": "^1.5.5",
+    "@zxing/browser": "^0.1.5",
+    "i": "^0.3.7",
+    "install": "^0.13.0",
+    "npm": "^11.1.0",
+    "qrcode": "^1.5.4"
   }
 }

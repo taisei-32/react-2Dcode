@@ -54,8 +54,11 @@ function DataMatrixEncode() {
                         <p>{count}文字</p>
                     </div>
                 </div>
+                <div className="button">
+                    <button type="button" onClick={generatedatamatrix}>DataMatrix Generate</button>
+                </div>
                 <div className="div_canvas">
-                    <canvas ref={canvasRef} width={70} height={70} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
+                    <canvas ref={canvasRef} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
                 </div>
             </form>
         </div>

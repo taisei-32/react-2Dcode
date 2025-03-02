@@ -2,11 +2,12 @@ import React, {useState, useRef} from "react";
 import "./Encode.css";
 import QRCode, { QRCodeErrorCorrectionLevel } from "qrcode";
 
-function QR_Encode() {
+function QREncode() {
     const [count, setCount] = useState(0);
     const [isCanvasVisible, setIsCanvasVisible] = useState(false);
     const inputtext = useRef<HTMLTextAreaElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const sizeInput = useRef<HTMLInputElement>(null);
     const errorInput = useRef<HTMLSelectElement>(null);
     const qzonInput = useRef<HTMLInputElement>(null);
     const colorDarkInput = useRef<HTMLInputElement>(null);
@@ -29,9 +30,10 @@ function QR_Encode() {
                 console.log(text);
                 QRCode.toCanvas(
                     canvasRef.current,
-                    text,
+                    inputtext.current?.value,
                     {
                         errorCorrectionLevel: errorCorrectionLevel_input,
+                        scale: Number(sizeInput.current?.value),
                         margin: Number(qzonInput.current?.value),
                         color: {
                             dark: colorDarkInput.current?.value,
@@ -54,7 +56,8 @@ function QR_Encode() {
     return(
         <div>
             <form>
-                <label>Text: </label>
+                <h1>QRCode生成</h1>
+                <p className="text">文字を入力</p>
                 <textarea id="qr_gettext" ref={inputtext} rows={8} cols={100} maxLength={150} placeholder="150文字以内" onChange={countFunc}></textarea>
                 <div className="reset_count">
                     <input className="reset" type="reset" value="リセット"></input>
@@ -62,11 +65,12 @@ function QR_Encode() {
                         <p>{count}文字</p>
                     </div>
                 </div>
+                {/* scaleも追加しよう */}
                 <div className="table-option">
                     <tbody>
                         <tr className="errorlevel">
                             <td className="td_name">
-                                <div>誤り訂正</div>
+                                <div>誤り訂正(L,M,Q,H)</div>
                             </td>
                             <td className="td_op">
                                 <select ref={errorInput} defaultValue="M">
@@ -79,7 +83,15 @@ function QR_Encode() {
                         </tr>
                         <tr>
                             <td className="td_name">
-                                <div>クワイエットゾーン</div>
+                                <div>サイズ(1-10)</div>
+                            </td>
+                            <td className="td_number">
+                                <input type="number" ref={sizeInput} defaultValue={4} min="1" max="10"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="td_name">
+                                <div>クワイエットゾーン(1-20)</div>
                             </td>
                             <td className="td_number">
                                 <input type="number" ref={qzonInput} defaultValue={4} min="1" max="20"></input>
@@ -107,11 +119,11 @@ function QR_Encode() {
                     <button type="button" onClick={generateQR}>QRCode Generate</button>
                 </div>
                 <div　className="div_canvas">
-                    <canvas ref={canvasRef} width={70} height={70} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
+                    <canvas ref={canvasRef} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
                 </div>
             </form>
         </div>
     )
 }
 
-export default QR_Encode;
+export default QREncode;

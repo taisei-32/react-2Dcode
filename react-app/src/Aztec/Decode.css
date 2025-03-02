@@ -1,0 +1,80 @@
+div.main {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 700px;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+div.drag_drop{
+    margin: 50px auto;
+    width: 90%;
+    height: 150px;
+    max-width: 700px;
+    font-size: 1rem;
+    font-family: "Arial", sans-serif;
+    background: #f4f4f5;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed dimgray;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+div.drag_drop:hover{
+    background: rgb(226, 226, 228);;
+    border-color: dimgray;
+}
+
+input.input_file{
+    display: none;
+}
+
+div.result{
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+img.preview {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* div.result{
+    margin-top: 20px;
+    text-align: center;
+} */
+
+div.result_reader {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+p.p_result {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+p {
+    color: #333;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}

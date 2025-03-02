@@ -2,16 +2,16 @@ import React, {useState, useRef} from "react";
 import "./Encode.css";
 import bwipjs from '@bwip-js/browser';
 
-function DataMatrix_Encode() {
+function DataMatrixEncode() {
     const [count, setCount] = useState(0);
     const [isCanvasVisible, setIsCanvasVisible] = useState(false);
     const inputtext = useRef<HTMLTextAreaElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const marginInput = useRef<HTMLInputElement>(null);
-    const scaleInput = useRef<HTMLInputElement>(null);
-    const widthInput = useRef<HTMLInputElement>(null);
-    const colorDarkInput = useRef<HTMLInputElement>(null);
-    const colorLightInput = useRef<HTMLInputElement>(null);
+    // const marginInput = useRef<HTMLInputElement>(null);
+    // const scaleInput = useRef<HTMLInputElement>(null);
+    // const widthInput = useRef<HTMLInputElement>(null);
+    // const colorDarkInput = useRef<HTMLInputElement>(null);
+    // const colorLightInput = useRef<HTMLInputElement>(null);
     const countFunc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCount(event.target.value.length);
         // console.log(text);
@@ -24,7 +24,7 @@ function DataMatrix_Encode() {
                 const text = inputtext.current.value;
                 console.log(text);
     
-                let canvas = bwipjs.toCanvas(
+                bwipjs.toCanvas(
                     canvasRef.current,
                     {
                         bcid: "datamatrix",
@@ -56,4 +56,4 @@ function DataMatrix_Encode() {
     )
 }
 
-export default DataMatrix_Encode;
+export default DataMatrixEncode;

@@ -1,8 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import QR_Encode from "./QR/Encode";
-import DataMatrix_Encode from "./DataMatrix/Encode"
-import Aztec_Encode from "./Aztec/Encode"
+import QREncode from "./QR/Encode";
+import QRDecode from "./QR/Decode";
+import DataMatrixEncode from "./DataMatrix/Encode"
+import DataMatrixDecode from "./DataMatrix/Decode"
+import AztecEncode from "./Aztec/Encode"
+import AztecDecode from "./Aztec/Decode"
 import './App.css';
 import {
   BrowserRouter,
@@ -10,9 +12,6 @@ import {
   Routes,
   Link,
 } from "react-router-dom";
-
-const Decode = () => <h2>Decode Page</h2>;
-const Encode = () => <h2>Encode Page</h2>;
 
 function App() {
   return (
@@ -56,12 +55,12 @@ function App() {
         </ul>
       </header>
       <Routes>
-        <Route path='/QR/decode' element={<Decode />} />
-        <Route path='/QR/encode' element={<QR_Encode />} />
-        <Route path='/Aztec/decode' element={<Decode />} />
-        <Route path='/Aztec/encode' element={<Aztec_Encode />} />
-        <Route path='/datamatrix/decode' element={<Decode />} />
-        <Route path='/datamatrix/encode' element={<DataMatrix_Encode />} />
+        <Route path='/QR/decode' element={<QRDecode />} />
+        <Route path='/QR/encode' element={<QREncode />} />
+        <Route path='/Aztec/decode' element={<AztecDecode />} />
+        <Route path='/Aztec/encode' element={<AztecEncode />} />
+        <Route path='/datamatrix/decode' element={<DataMatrixDecode />} />
+        <Route path='/datamatrix/encode' element={<DataMatrixEncode />} />
       </Routes>
     </div>
     </BrowserRouter>

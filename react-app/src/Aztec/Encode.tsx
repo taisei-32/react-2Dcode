@@ -1,54 +1,86 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import "./Encode.css";
 import bwipjs from '@bwip-js/browser';
 
-function Aztec_Encode() {
+function AztecEncode() {
     const [count, setCount] = useState(0);
     const [isCanvasVisible, setIsCanvasVisible] = useState(false);
     const inputtext = useRef<HTMLTextAreaElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const marginInput = useRef<HTMLInputElement>(null);
-    const scaleInput = useRef<HTMLInputElement>(null);
-    const widthInput = useRef<HTMLInputElement>(null);
-    const colorDarkInput = useRef<HTMLInputElement>(null);
-    const colorLightInput = useRef<HTMLInputElement>(null);
+    const sizeInput = useRef<HTMLInputElement>(null);
+    const errorInput = useRef<HTMLInputElement>(null);
     const countFunc = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCount(event.target.value.length);
         // console.log(text);
     };
 
-    const generateaztec = (event: React.MouseEvent<HTMLButtonElement>) =>{
-        try{
-            setIsCanvasVisible(true);
-            if (inputtext.current && canvasRef.current){
-                const text = inputtext.current.value;
-                console.log(text);
-    
-                let canvas = bwipjs.toCanvas(
-                    canvasRef.current,
-                    {
-                        bcid: "azteccode",
-                        text: text,
-                    }
-                );
-            }
+    interface AztecRenderOptions extends bwipjs.RenderOptions {
+        eclevel?: string;
+    }
+
+    const generateaztec = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (count === 0) {
+            window.alert("文字を入力してください")
         }
-        catch (e){
-            
+        else {
+            try {
+                setIsCanvasVisible(true);
+                if (inputtext.current && canvasRef.current) {
+                    console.log(inputtext.current?.value);
+                    let options: AztecRenderOptions = {
+                        bcid: "azteccode",
+                        text: inputtext.current?.value,
+                        scale: Number(sizeInput.current?.value),
+                        eclevel: String(errorInput.current?.value),
+                    }
+
+                    bwipjs.toCanvas(
+                        canvasRef.current,
+                        options
+                    );
+                }
+            }
+            catch (e) {
+
+            }
         }
     }
 
-    return(
+    return (
         <div>
             <form>
                 <label>Text: </label>
                 <textarea id="qr_gettext" ref={inputtext} rows={8} cols={100} maxLength={150} placeholder="150文字以内" onChange={countFunc}></textarea>
-                <p>{count}文字</p>
-                <p></p>
+                <div className="reset_count">
+                    <input className="reset" type="reset" value="リセット"></input>
+                    <div>
+                        <p>{count}文字</p>
+                    </div>
+                </div>
+                <div>
+                    <tbody>
+                        <tr className="errorlevel">
+                            <td className="td_name">
+                                <div>誤り訂正(5-90)</div>
+                            </td>
+                            <td className="td_number">
+                                <input type="number" ref={errorInput} defaultValue={23} min="5" max="90"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="td_name">
+                                <div>サイズ</div>
+                            </td>
+                            <td className="td_number">
+                                <input type="number" ref={sizeInput} defaultValue={2} min="1" max="10"></input>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
                 <div className="button">
                     <button type="button" onClick={generateaztec}>AztecCode Generate</button>
                 </div>
-                <div　className="div_canvas">
+                <div className="div_canvas">
                     <canvas ref={canvasRef} width={70} height={70} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
                 </div>
             </form>
@@ -56,4 +88,4 @@ function Aztec_Encode() {
     )
 }
 
-export default Aztec_Encode;
+export default AztecEncode;

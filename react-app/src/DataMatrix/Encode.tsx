@@ -38,15 +38,21 @@ function DataMatrixEncode() {
         }
     }
 
+    const ResetCount = () =>{
+        setCount(0);
+    }
+
     return(
         <div>
             <form>
-                <label>Text: </label>
+                <h1>DataMatrix生成</h1>
+                <p className="text">文字を入力</p>
                 <textarea id="qr_gettext" ref={inputtext} rows={8} cols={100} maxLength={150} placeholder="150文字以内" onChange={countFunc}></textarea>
-                <p>{count}文字</p>
-                <p></p>
-                <div className="button">
-                    <button type="button" onClick={generatedatamatrix}>DataMatrix Generate</button>
+                <div className="reset_count">
+                    <input className="reset" type="reset" value="リセット" onClick={ResetCount}></input>
+                    <div>
+                        <p>{count}文字</p>
+                    </div>
                 </div>
                 <div className="div_canvas">
                     <canvas ref={canvasRef} width={70} height={70} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>

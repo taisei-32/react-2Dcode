@@ -53,6 +53,10 @@ function QREncode() {
         }
     }
 
+    const ResetCount = () =>{
+        setCount(0);
+    }
+
     return(
         <div>
             <form>
@@ -60,7 +64,7 @@ function QREncode() {
                 <p className="text">文字を入力</p>
                 <textarea id="qr_gettext" ref={inputtext} rows={8} cols={100} maxLength={150} placeholder="150文字以内" onChange={countFunc}></textarea>
                 <div className="reset_count">
-                    <input className="reset" type="reset" value="リセット"></input>
+                    <input className="reset" type="reset" value="リセット" onClick={ResetCount}></input>
                     <div>
                         <p>{count}文字</p>
                     </div>
@@ -118,7 +122,7 @@ function QREncode() {
                 <div className="button">
                     <button type="button" onClick={generateQR}>QRCode Generate</button>
                 </div>
-                <div　className="div_canvas">
+                <div className="div_canvas">
                     <canvas ref={canvasRef} style={{ display: isCanvasVisible ? "block" : "none" }}></canvas>
                 </div>
             </form>

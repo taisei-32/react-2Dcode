@@ -46,13 +46,18 @@ function AztecEncode() {
         }
     }
 
+    const ResetCount = () =>{
+        setCount(0);
+    }
+
     return (
         <div>
             <form>
-                <label>Text: </label>
+                <h1>AztecCode生成</h1>
+                <p className="text">文字を入力</p>
                 <textarea id="qr_gettext" ref={inputtext} rows={8} cols={100} maxLength={150} placeholder="150文字以内" onChange={countFunc}></textarea>
                 <div className="reset_count">
-                    <input className="reset" type="reset" value="リセット"></input>
+                    <input className="reset" type="reset" value="リセット" onClick={ResetCount}></input>
                     <div>
                         <p>{count}文字</p>
                     </div>
@@ -69,7 +74,7 @@ function AztecEncode() {
                         </tr>
                         <tr>
                             <td className="td_name">
-                                <div>サイズ</div>
+                                <div>サイズ(1-10)</div>
                             </td>
                             <td className="td_number">
                                 <input type="number" ref={sizeInput} defaultValue={2} min="1" max="10"></input>
